@@ -1,15 +1,18 @@
 {
   "manifest_version": 3,
-  "name": "name in manifest.json",
-  "description": "description in manifest.json",
+  "name": "sideBrain",
+  "description": "Multi Purpose Extension Tool",
   "options_ui": {
     "page": "src/pages/options/index.html"
   },
   "action": {
-    "default_popup": "src/pages/popup/index.html",
     "default_icon": {
       "32": "icon-32.png"
     }
+  },
+  "background": {
+    "service_worker": "src/pages/background/index.ts",
+    "type": "module"
   },
   "chrome_url_overrides": {
     "newtab": "src/pages/newtab/index.html"
@@ -18,8 +21,12 @@
     "128": "icon-128.png"
   },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "sidePanel"
   ],
+  "side_panel": {
+    "default_path": "src/pages/panel/index.html" 
+  },
   "content_scripts": [
     {
       "matches": [
